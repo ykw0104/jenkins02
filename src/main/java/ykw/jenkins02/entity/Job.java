@@ -19,10 +19,14 @@ import javax.persistence.Table;
 												query="SELECT e.loginUrl "
 														+ " FROM Job j JOIN j.envType e "
 														+ " WHERE j.name=:name AND e.id=:envTypeId")
-						,@NamedQuery(name="Job.findJob",
+						,@NamedQuery(name="Job.findJobByName",
 												query="SELECT j"
 														+ " FROM Job j JOIN j.envType e "
 														+ "WHERE e.id= :envTypeId AND j.name=:name")
+						,@NamedQuery(name="Job.findJobsByView",
+												query="SELECT j "
+														+ "FROM Job j JOIN j.envType e "
+														+ "WHERE e.id= :envTypeId AND j.jenkinsView=:jenkinsView")
 })
 public class Job {
 	
@@ -36,6 +40,8 @@ public class Job {
 	private String svnUrl;
 	@Column
 	private String mvnCmd;
+	@Column
+	private String jenkinsView;
 	
 	@ManyToOne
 	@JoinColumn(name="ENVTYPE_ID")
@@ -105,5 +111,14 @@ public class Job {
 	public void setSsh(Ssh ssh) {
 		this.ssh = ssh;
 	}
+
+	public String getJenkinsView() {
+		return jenkinsView;
+	}
+
+	public void setJenkinsView(String jenkinsView) {
+		this.jenkinsView = jenkinsView;
+	}
+
 
 }

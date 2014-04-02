@@ -1,4 +1,4 @@
-package ykw.jenkins02.selenium;
+package ykw.jenkins02.selenium_server;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

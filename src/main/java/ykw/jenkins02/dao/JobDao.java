@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import ykw.jenkins02.entity.Job;
 
 @Repository("jobDao")
+@SuppressWarnings("unchecked")
 public class JobDao {
 
 	@PersistenceContext
@@ -18,7 +19,6 @@ public class JobDao {
 	/**
 	 *根据某个环境 获取所有Job
 	 */
-	@SuppressWarnings("unchecked")
 	public List<Job> findAllJobs(int envTypeId){
 		return (List<Job>)em.createQuery("SELECT j FROM Job j JOIN j.envType e WHERE e.id= :envId")
 				.setParameter("envId", envTypeId).getResultList();
@@ -26,8 +26,8 @@ public class JobDao {
 	/**
 	 *根据某个环境 和job名  获取Job
 	 */
-	public Job findJobByEnvTypeIdAndJobName(int envTypeId,String jobName){
-		return (Job)em.createNamedQuery("Job.findJob")
+	public Job findJobByJobName(int envTypeId,String jobName){
+		return (Job)em.createNamedQuery("Job.findJobByName")
 				.setParameter("envTypeId", envTypeId).setParameter("name", jobName).getSingleResult();
 	}
 	
@@ -46,6 +46,11 @@ public class JobDao {
 					setParameter("name", jobName).setParameter("envTypeId", envTypeId).getSingleResult();
 	}
 	
+	public List<Job> findJobsByView(String jenkinsView,int envTypeId){
+		return (List<Job>)em.createNamedQuery("Job.findJobsByView").setParameter("envTypeId", envTypeId).
+						setParameter("jenkinsView", jenkinsView).getResultList();
+	}
+	
 	/**
 	 * 添加job
 	 */
@@ -53,6 +58,10 @@ public class JobDao {
 		em.persist(job);
 	}
 
+	public void updateOneJob(Job job){
+		em.merge(job);
+	}
+	
 	public EntityManager getEm() {
 		return em;
 	}

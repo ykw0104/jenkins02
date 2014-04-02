@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ykw.jenkins02.dao.JobDao;
-import ykw.jenkins02.selenium.JobSelenium;
+import ykw.jenkins02.selenium_server.JobSelenium;
 
 public class Test01 {
 	public static void main(String[] args) {

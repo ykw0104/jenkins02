@@ -7,6 +7,28 @@
 	<name>jenkins02</name>
 
 	<dependencies>
+		<!-- my old  jenkins code when to neen some funcionts of it -->
+		<!-- may be some bugs -->
+		<dependency>
+			<groupId>ykw.jenkins</groupId>
+			<artifactId>jenkins</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<!-- for dom4j -->
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+  			<artifactId>jaxen</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<!-- jenkins02 dependencies contain jars -->
+	
 		<dependency>
 			<groupId>ykw.oracle</groupId>
 			<artifactId>oracle</artifactId>

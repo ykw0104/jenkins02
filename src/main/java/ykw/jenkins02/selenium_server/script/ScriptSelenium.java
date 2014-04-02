@@ -1,4 +1,4 @@
-package ykw.jenkins02.selenium.script;
+package ykw.jenkins02.selenium_server.script;
 
 public abstract class ScriptSelenium {
 	
